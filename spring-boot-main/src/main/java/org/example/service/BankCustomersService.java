@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class BankCustomersService {
 
     @Autowired
-    @Qualifier("SimpleDao")
+    @Qualifier("ExternalCallerDao")
     IDao iDao;
 
     public void createCustomer(BankCustomer bankCustomer) {
