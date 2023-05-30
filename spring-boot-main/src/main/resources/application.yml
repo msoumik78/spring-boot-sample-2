@@ -1,0 +1,59 @@
+
+
+spring.application.name: bank-customers-service
+
+server:
+  port: 8085
+
+management:
+  metrics:
+    enable:
+      all: false
+      http.server.requests: true
+      system.cpu.count: true
+      executor: true
+      httpcomponents: true
+  endpoints:
+    customization: true
+    web:
+      base-path: /management
+      exposure:
+        include: info, health, metrics, prometheus, loggers
+      userid: prod
+      password: prod123
+
+secure:
+  endpoints:
+    - "/api/**"
+    - "/jwk/**"
+    - "/swagger-ui.html"
+    - "/swagger-ui/**"
+    - "/swagger-resources/**"
+    - "/v3/api-docs/**"
+    - "/management/health/**"
+
+---
+
+spring.config.activate.on-profile:
+  - test
+  - load-test
+
+management:
+  endpoints:
+    customization: false
+    web:
+      userid: test
+      password: test123
+
+
+---
+
+spring.config.activate.on-profile:
+  - local
+
+management:
+  endpoints:
+    customization: false
+    web:
+      userid: local
+      password: local123
