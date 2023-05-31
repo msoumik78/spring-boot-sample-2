@@ -1,18 +1,16 @@
 package org.example.service;
 
+import lombok.RequiredArgsConstructor;
 import org.example.BankCustomer;
 import org.example.dao.IDao;
 import org.example.exception.BusinessException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class BankCustomersService {
 
-    @Autowired
-    @Qualifier("ExternalCallerDao")
-    IDao iDao;
+    private final IDao iDao;
 
     public void createCustomer(BankCustomer bankCustomer) {
         iDao.createCustomer(bankCustomer);

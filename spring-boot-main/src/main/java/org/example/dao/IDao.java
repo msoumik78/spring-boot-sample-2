@@ -1,16 +1,27 @@
 package org.example.dao;
 
 import org.example.BankCustomer;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
+@FeignClient(name = "crm", url = "http://localhost:2345")
 public interface IDao {
 
+    @PostMapping(value = "/CRM/spi/1/users")
     void createCustomer(BankCustomer bankCustomer);
 
-    BankCustomer getCustomerDetail(String bankCustomerName);
+    @GetMapping(value = "/CRM/spi/1/users/{customerName}")
+    BankCustomer getCustomerDetail(@PathVariable("customerName") String bankCustomerName);
 
-    void removeCustomerDetail(String bankCustomerName);
+    @DeleteMapping(value = "/CRM/spi/1/users/{customerName}")
+    void removeCustomerDetail(@PathVariable("customerName") String bankCustomerName);
 
-    void updateCustomerDetail(String bankCustomerName, BankCustomer bankCustomer);
+    @PutMapping(value = "/CRM/spi/1/users/{customerName}")
+    void updateCustomerDetail(@PathVariable("customerName") String bankCustomerName, BankCustomer bankCustomer);
 
 
 }
