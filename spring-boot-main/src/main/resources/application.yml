@@ -35,10 +35,16 @@ secure:
 crm:
   url: "http://localhost:2345"
 
-webclient:
-  connection-time-out-millis: 2000
-  read-time-out-secs: 2
-  write-time-out-secs: 2
+spring:
+  cloud:
+    openfeign:
+      httpclient:
+        maxConnections: 195
+        maxConnectionsPerRoute: 160
+        enabled: true
+        connectionRequestTimeoutMilliSeconds: 250
+        baseUrlOfTarget: ${crm.url}
+        originatingApplicationName: ${spring.application.name}
 
 ---
 
