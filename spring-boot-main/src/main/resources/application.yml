@@ -35,6 +35,11 @@ secure:
 crm:
   url: "http://localhost:2345"
 
+schedule:
+  batchjob1:
+    fixed-rate: 5000
+    initial-delay: 1000
+  batchjob2: "*/5 * * ? * *"
 
 ---
 
