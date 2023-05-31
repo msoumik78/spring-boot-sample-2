@@ -14,6 +14,11 @@ public class ExceptionHelper extends ResponseEntityExceptionHandler {
         return new ResponseEntity<Object>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(value = { CRMException.class })
+    public ResponseEntity<Object> handleCRMException(CRMException ex) {
+        return new ResponseEntity<Object>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler(value = { InvalidInputException.class })
     public ResponseEntity<Object> handleInvalidInputException(InvalidInputException ex) {
         return new ResponseEntity<Object>(ex.getMessage(), HttpStatus.BAD_REQUEST);

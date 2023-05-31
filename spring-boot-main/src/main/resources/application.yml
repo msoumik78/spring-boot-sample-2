@@ -32,6 +32,9 @@ secure:
     - "/v3/api-docs/**"
     - "/management/health/**"
 
+crm:
+  url: "http://localhost:2345"
+
 ---
 
 spring.config.activate.on-profile:
