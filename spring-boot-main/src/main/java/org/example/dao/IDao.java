@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.example.BankCustomer;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +16,7 @@ public interface IDao {
     void createCustomer(BankCustomer bankCustomer);
 
     @GetMapping(value = "/CRM/spi/1/users/{customerName}")
+    @CircuitBreaker(name="crmRemoteCall")
     BankCustomer getCustomerDetail(@PathVariable("customerName") String bankCustomerName);
 
     @DeleteMapping(value = "/CRM/spi/1/users/{customerName}")

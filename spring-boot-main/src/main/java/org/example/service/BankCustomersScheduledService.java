@@ -1,6 +1,7 @@
 package org.example.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 @EnableScheduling
 @Slf4j
+@ConditionalOnProperty(value="schedule.batchjobs.enabled", havingValue="true")
 public class BankCustomersScheduledService {
 
     @Scheduled(fixedRateString = "${schedule.batchjob1.fixed-rate}", initialDelayString = "${schedule.batchjob1.initial-delay}")
