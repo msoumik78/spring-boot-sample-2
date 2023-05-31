@@ -35,6 +35,11 @@ secure:
 crm:
   url: "http://localhost:2345"
 
+webclient:
+  connection-time-out-millis: 2000
+  read-time-out-secs: 2
+  write-time-out-secs: 2
+
 ---
 
 spring.config.activate.on-profile:
