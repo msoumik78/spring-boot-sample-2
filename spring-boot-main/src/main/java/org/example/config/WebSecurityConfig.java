@@ -32,7 +32,6 @@ public class WebSecurityConfig {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
-        System.out.println("Management userid = "+userId+", password = "+password);
         UserDetails admin = User.withUsername(userId)
                 .password(passwordEncoder.encode(password))
                 .roles("ADMIN_ROLE")

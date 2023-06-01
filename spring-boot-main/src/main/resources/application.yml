@@ -65,6 +65,15 @@ resilience4j:
         registerHealthIndicator: false
         writableStackTraceEnabled: false
 
+hazelcast:
+  credentials:
+      cluster-name: cluster.name
+      connection-timeout-millis: 10000
+      heartbeat-timeout-millis: 90000
+      ip-list:
+        - "127.0.0.1"
+
+
 ---
 
 spring.config.activate.on-profile:

@@ -69,6 +69,12 @@
             <version>2.0.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-all</artifactId>
+            <version>4.2.4</version>
+        </dependency>
+
     </dependencies>
 
 </project>
